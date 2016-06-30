@@ -17,11 +17,11 @@ defmodule Fauna do
   defmacro query(options, [do: block]) do
     IO.puts inspect(block)
     IO.puts "\n"
-    quote do: Fauna.HTTP.request unquote(options), unquote(extract([], block))
+    quote do: Fauna.HTTP.request(unquote(options), unquote(extract([], block)))
   end
 
   defmacro query!(options, [do: block]) do
-    quote do: Fauna.HTTP.request! unquote(options), unquote(extract([], block))
+    quote do: Fauna.HTTP.request!(unquote(options), unquote(extract([], block)))
   end
 
   defmacro expr(do: block) do

@@ -90,28 +90,28 @@ defmodule QueryTest do
   end
 
   test "take" do
-    o = Fauna.expr do: take 2, [1,2,3]
+    o = Fauna.expr do: take(2, [1,2,3])
     assert o == [take: 2, collection: [1,2,3]]
   end
 
   test "drop" do
-    o = Fauna.expr do: drop 2, [1,2,3]
+    o = Fauna.expr do: drop(2, [1,2,3])
     assert o == [drop: 2, collection: [1,2,3]]
   end
 
   test "prepend" do
-    o = Fauna.expr do: prepend 1, [2,3]
+    o = Fauna.expr do: prepend(1, [2,3])
     assert o == [prepend: 1, collection: [2,3]]
 
-    o = Fauna.expr do: prepend [1,2], [3,4]
+    o = Fauna.expr do: prepend([1,2], [3,4])
     assert o == [prepend: [1,2], collection: [3,4]]
   end
 
   test "append" do
-    o = Fauna.expr do: append 1, [2,3]
+    o = Fauna.expr do: append(1, [2,3])
     assert o == [append: 1, collection: [2,3]]
 
-    o = Fauna.expr do: append [1,2], [3,4]
+    o = Fauna.expr do: append([1,2], [3,4])
     assert o == [append: [1,2], collection: [3,4]]
   end
 
