@@ -26,6 +26,7 @@ defmodule FaunaDB.Mixfile do
     [
       {:httpoison, "~> 0.9.0"},
       {:exjsx, "~> 3.2.0"},
+      {:calendar, "~> 0.16.0"},
       {:excoveralls, "~> 0.5.5", only: :test}
     ]
   end

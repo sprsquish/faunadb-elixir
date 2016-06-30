@@ -1,6 +1,7 @@
+require Fauna
+
 defmodule QueryTest do
   use ExUnit.Case, async: true
-  import Fauna
 
   test "ref" do
     r = Fauna.expr do: ref("databases")
@@ -17,10 +18,10 @@ defmodule QueryTest do
 
   test "obj" do
     o = Fauna.expr do: obj(name: "foo")
-    assert o == ["@object": [name: "foo"]]
+    assert o == ["@obj": [name: "foo"]]
 
     o = Fauna.expr do: obj(name: "foo", rank: "bar")
-    assert o == ["@object": [name: "foo", rank: "bar"]]
+    assert o == ["@obj": [name: "foo", rank: "bar"]]
   end
 
   test "let" do
@@ -370,5 +371,11 @@ defmodule QueryTest do
 
     o = Fauna.expr do: select(["foo", "bar"], [foo: "baz"], default: 1)
     assert o == [select: ["foo", "bar"], from: [foo: "baz"], default: 1]
+  end
+
+  test "external vars" do
+    r = %Fauna.Ref{value: "foo"}
+    o = Fauna.expr do: get(r)
+    assert o == [get: r]
   end
 end

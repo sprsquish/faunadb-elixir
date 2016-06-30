@@ -32,7 +32,6 @@ defmodule Fauna.HTTP do
 
   @doc false
   def process_response_body(body) do
-    IO.puts "response body #{body}"
     case body |> to_string |> JSX.decode do
       {:error, _} -> body
       {:ok, decoded} -> Fauna.Json.deserialize decoded

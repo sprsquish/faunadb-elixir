@@ -2,11 +2,19 @@ sudo: false
 branches:
   only:
     - master
+
 language: elixir
 elixir:
-  - 1.2.5
+  - 1.3.1
 otp_release:
   - 18.0
+
 env:
-  - MIX_ENV=test
+  global:
+    - secure: Um6p4v1Wexny8JMC+6HgNmP81eU/opcVmzRzMb0/utMJxFCzqe5CVtfQ9MrP9MLMg3CNbJDjZ8QtttJghQlFJ3lV1G11Ja55KlPbP0AgjnQxib0obmbw4q8KELBIg9OjfT2fBUTWZI+b+zNNsxjf1QwVRzpY0ZfgGmhPfALLwvwQrieczrDC9OUgtWJilxUPw8Wh3SxXE2sawbrcW2sTDiBZqAJVJYzTAZdDaRleZ+0Zgr9j7FgKzKhRhFiBDgt0KJDg+g/POQjDdaxDZ0rElZNo5cmxAytagjLqHLcsrwE7n98nCLF+e38y2ccg2TI9j2bDw+Ncj9yAGozcZnWXDcql0pASA3yEKtT13Q034uqQoitQtQJUfeCEuITyC1IHVtSsR+cP+FaGsrH6xtjknLC68TEguxH4V0l9FdtVzxlTvMN3VGPe/cF0TO2cVCzBD2bClk2dzeFuJ5fy5ccCbKDABHD8duwyJAmvZ/F5urXM1+3DLmYG6YFrHRVN2P0PyRvXScF/6nJsCk8wBi0eakKOOJhCPWDJxU+uVs6xQjDlsrMphsyquM8k9o5oaVmAeVErmo++lPAOhOussT8kMomwAMvPZ/xoMXeUQIDq5BfNuKycMTFU6/qB2KGorzyB+TNwu6bQ6uprBKHbBARc4Xs4WIwPE2uuNK2VZmU6TI8
+    - FAUNA_DOMAIN=rest.faunadb.com
+    - FAUNA_SCHEME=https
+    - FAUNA_PORT=443
+    - MIX_ENV=test
+
 script: mix coveralls.travis

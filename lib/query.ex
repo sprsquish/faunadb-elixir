@@ -15,8 +15,6 @@ defmodule Fauna do
   use Fauna.Logic
 
   defmacro query(options, [do: block]) do
-    IO.puts inspect(block)
-    IO.puts "\n"
     quote do: Fauna.HTTP.request(unquote(options), unquote(extract([], block)))
   end
 
@@ -43,7 +41,7 @@ defmodule Fauna do
         quote do: %Fauna.Ref{value: unquote(extract(vars, ref))}
 
       {:obj, _, [object]} ->
-        ["@object": extract(vars, object)]
+        ["@obj": extract(vars, object)]
 
       {:let, _, [qvars, [do: block]]} ->
         new_vars = Keyword.keys qvars
