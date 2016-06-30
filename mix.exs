@@ -13,7 +13,9 @@ defmodule FaunaDB.Mixfile do
       description: @description,
       package: package,
       deps: deps,
-      source_url: "https://github.com/faunadb/faunadb-elixir" ]
+      source_url: "https://github.com/faunadb/faunadb-elixir",
+      test_coverage: [tool: ExCoveralls]
+    ]
   end
 
   def application do
@@ -22,14 +24,16 @@ defmodule FaunaDB.Mixfile do
 
   defp deps do
     [
-      {:httpoison, "~> 0.8.0"},
-      {:exjsx, "~> 3.2.0"}
+      {:httpoison, "~> 0.9.0"},
+      {:exjsx, "~> 3.2.0"},
+      {:excoveralls, "~> 0.5.5", only: :test}
     ]
   end
 
   defp package do
     [ maintainers: ["FaunaDB"],
       licenses: ["MPL-2.0"],
-      links: %{"Github" => "https://github.com/faunadb/faunadb-elixir"} ]
+      links: %{"Github" => "https://github.com/faunadb/faunadb-elixir"}
+    ]
   end
 end
