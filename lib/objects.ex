@@ -4,7 +4,7 @@ end
 
 defimpl JSX.Encoder, for: Fauna.Ref do
   def json(ref) do
-    ["@ref": ref.value]
+    [:start_object, "@ref", ref.value, :end_object]
   end
 end
 
@@ -14,6 +14,6 @@ end
 
 defimpl JSX.Encoder, for: Fauna.SetRef do
   def json(ref) do
-    ["@ref": ref.value]
+    [:start_object, "@set", ref.value, :end_object]
   end
 end
